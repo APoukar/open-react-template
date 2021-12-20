@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Logo from './partials/Logo';
+import { HashLink } from 'react-router-hash-link';
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -15,7 +16,7 @@ const propTypes = {
 const defaultProps = {
   navPosition: '',
   hideNav: false,
-  hideSignin: false,
+  hideSignin: true,
   bottomOuterDivider: false,
   bottomDivider: false
 }
@@ -112,8 +113,14 @@ const Header = ({
                       navPosition && `header-nav-${navPosition}`
                     )}>
                     <li>
-                      <Link to="#0" onClick={closeMenu}>Documentation</Link>
+                      <HashLink scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'end' })} to="/#co-delame" onClick={closeMenu}>Co dělám</HashLink>
                     </li>
+                    <li>
+                      <HashLink scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'end' })} to="/#jak-to-delame" onClick={closeMenu}>Jak to dělám</HashLink>
+                    </li>
+                    {/* <li>
+                      <HashLink scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'end' })} to="/#reference" onClick={closeMenu}>Reference</HashLink>
+                    </li> */}
                   </ul>
                   {!hideSignin &&
                     <ul
